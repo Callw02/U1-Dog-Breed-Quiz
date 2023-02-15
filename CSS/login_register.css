@@ -4,24 +4,28 @@
 }
 
 body{
-    font-family: "roboto_regular";
     margin: 0;
     background-color: aquamarine;
+}
+#wrapper{
+    font-family: "roboto_regular";
+    margin: 0;
     display: flex;
     align-items: center;
     flex-direction: column;
-}
+    height: 100vh;
 
+    transition-property: background-color;
+    transition-duration: 1s;
+}
 #logo_title{
     display: flex;
     justify-content: space-between;
     margin: 5px 10px 5px 10px;
 }
-
 img{
     width: 15%;
 }
-
 #title{
     display: flex;
     align-items: center;
@@ -31,7 +35,6 @@ h1{
     margin-bottom: 50px;
     font-size: 40px;
 }
-
 #login h3{
     margin: 0;
     font-size: 18px;
@@ -62,4 +65,13 @@ footer{
 span{
     text-decoration: underline;
     color: blue;
+}
+
+.registration{
+    background-color: seagreen;
+}
+#login_link{
+    text-decoration: underline;
+    margin: 20px;
+    font-size: 20px;
 }
