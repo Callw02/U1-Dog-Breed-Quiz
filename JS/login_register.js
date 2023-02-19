@@ -25,12 +25,12 @@ function register_page(event){
 }
     document.querySelector("button").addEventListener("click", login_or_reg)
 
-
+    
 async function login_or_reg(event){
     let user = document.querySelector("#username_input").value;
     let pass = document.querySelector("#password_input").value;
-    
-
+   
+   
     let register_post = {
         action: "register",
         user_name: user,
@@ -43,48 +43,54 @@ async function login_or_reg(event){
         body: JSON.stringify(register_post),
     }
    
-
-    let register_request = new Request (`https://teaching.maumt.se/apis/access/`, options)
-    let login_request = new Request (`https://teaching.maumt.se/apis/access/?action=check_credentials&user_name=${user}&password=${pass}`)
-    
-   
     if (event.target.textContent === "Register") {
-        let div = document.createElement("div");
-        show_feedback(div);
 
-        let resource = await fetch_function(register_request)
-        switch (resource.status) {
-            case 418:
-                div.textContent = "The server thinks it's not a teapot!"
-                break;
-            case 409:
-                div.textContent = "Sorry that name is taken. Please try with another one"
-            break;
-            case 400:
-                div.textContent = "Bad request"
-                break;
-            case 200: div.textContent = "Registration Complete. Please proceed to login"
-            break;
-        }
-       
-        let button = document.createElement("button")
-        button.textContent = "CLOSE"
-        button.classList.add("close_btn")
-        div.appendChild(button)
-        button.addEventListener("click", close_feedback)
-       
-        
-        
+       let register_rqst = new Request (`https://teaching.maumt.se/apis/access/`, options)
+       register_function(register_rqst)   
     }
 
     if(event.target.textContent === "Login"){
-        let div = document.createElement("div");
+        let login_rqst = new Request (`https://teaching.maumt.se/apis/access/?action=check_credentials&user_name=${user}&password=${pass}`)
+        login_function(login_rqst)
+    }
+    
+}
+
+async function register_function(register_request){
+    let div = document.createElement("div");
+    show_feedback(div);
+
+    let resource = await fetch_function(register_request)
+    
+    switch (resource.status) {
+        case 418:
+            div.textContent = "The server thinks it's not a teapot!"
+            break;
+        case 409:
+            div.textContent = "Sorry that name is taken. Please try with another one"
+        break;
+        case 400:
+            div.textContent = "Bad request"
+            break;
+        default: div.textContent = "Registration Complete. Please proceed to login"
+        break;
+    }
+   
+    let button = document.createElement("button")
+    button.textContent = "CLOSE"
+    button.classList.add("close_btn")
+    div.appendChild(button)
+    button.addEventListener("click", close_feedback)
+}
+
+async function login_function(login_request){
+    let user = document.querySelector("#username_input").value;
+    let pass = document.querySelector("#password_input").value;
+   
+    let div = document.createElement("div");
         show_feedback(div)
         let resource = await fetch_function(login_request);
         switch (resource.status) {
-            case 200:
-                
-                break;
                 case 418:
                     div.textContent = "The server thinks it's not a teapot!"
                     let button = document.createElement("button")
@@ -102,15 +108,15 @@ async function login_or_reg(event){
                 div.remove()
                 break;
         }
-       
-        
-    }
-    
+       if(resource.data.password === pass && resource.data.user_name === user){
+        successful_login(resource) 
+       }
 }
 
 async function fetch_function(request){
     let response = await fetch(request);
     let resource = await response.json();
+    console.log(resource);
         if(response.status !== 200){
             return response
         }

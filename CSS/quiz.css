@@ -1,0 +1,15 @@
+#user_information{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    height: 35px;
+    background-color: white;
+    padding: 5px;
+    
+    border-radius: 10px;
+}
+#logout_button{
+    height: 30px;
+    width: 25vw;
+}
