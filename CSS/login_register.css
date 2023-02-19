@@ -4,17 +4,19 @@
 }
 
 body{
+    font-family: "roboto_regular";
     margin: 0;
     background-color: aquamarine;
+    
+    
 }
 #wrapper{
-    font-family: "roboto_regular";
+    height: 100vh;
     margin: 0;
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
-
+    
     transition-property: background-color;
     transition-duration: 1s;
 }
@@ -77,4 +79,31 @@ span{
 }
 .registration_info{
     opacity: 0.3;
+}
+.info_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    height: 100px;
+    background-color: white;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    padding: 10px;
+}
+.close_btn{
+    width: 75vw;
+}
+.login_failed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+    width: 90vw;
+    height: 30px;
 }
