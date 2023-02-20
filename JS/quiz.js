@@ -1,4 +1,4 @@
-function successful_login(resource){
+async function successful_login(resource){
     let body = document.querySelector("body")
     body.innerHTML = `
     <body>
@@ -13,18 +13,15 @@ function successful_login(resource){
     </div>
     <div id="dog_image"></div>
     
-
-    <div class="options"></div>
-    <div class="options"></div>
-    <div class="options"></div>
-    <div class="options"></div>
-    
+    <div id="options">
+    </div>
 
     <footer> <p>The Dog Breed Quiz is made possible thanks to the free api by <span>DOG CEO Zine</span></p> </footer>
 
 </div>`
 
 localStorage.setItem("quiz_html", body.innerHTML)
+
 
 }
 
@@ -68,4 +65,31 @@ function logout_function(event){
     <script src="JS/login_register.js"></script>
     <script src="JS/quiz.js"></script>
     <script src="index.js"></script>`
+}
+
+get_dog()
+
+
+async function get_dog(){
+    let image_div = document.querySelector("#dog_image")
+    let img = document.createElement("img")
+    img.classList.add("dog_image")
+    let dog_request = new Request("https://dog.ceo/api/breeds/image/random")
+    let resource = await fetch_function(dog_request)
+    img.src = resource.message
+    image_div.appendChild(img)
+
+    make_options(4, img.src)
+}
+function make_options(number, link){
+    for(dog of ALL_BREEDS){
+        
+    }
+    for(let i = 0;i < number;i++){
+        let options = document.querySelector("#options")
+        let button = document.createElement("button")
+        button.classList.add("option_button")
+        options.appendChild(button)
+
+    }
 }
