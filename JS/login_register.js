@@ -2,7 +2,11 @@
 
 document.getElementById("register_link").addEventListener("click", register_page)
 
-
+if(localStorage.getItem("quiz_html")){
+    document.querySelector("body").innerHTML = localStorage.getItem("quiz_html")
+}
+let bodys = document.querySelector("body").innerHTML
+localStorage.setItem("login_html", bodys)
 
 function register_page(event){
     let wrapper = document.querySelector("#wrapper")
@@ -146,3 +150,4 @@ function button_function(button){
     div.appendChild(button)
     button.addEventListener("click", close_feedback)
 }
+
