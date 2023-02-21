@@ -2,13 +2,13 @@
 
 document.getElementById("register_link").addEventListener("click", register_page)
 
+
 if(localStorage.getItem("quiz_html")){
     document.querySelector("body").innerHTML = localStorage.getItem("quiz_html")
 }
-let bodys = document.querySelector("body").innerHTML
-localStorage.setItem("login_html", bodys)
 
 function register_page(event){
+    
     let wrapper = document.querySelector("#wrapper")
     wrapper.classList.toggle("registration")
 
@@ -61,7 +61,10 @@ async function login_or_reg(event){
 }
 
 async function register_function(register_request){
+    
     let div = document.createElement("div");
+    
+    
     show_feedback(div);
 
     let resource = await fetch_function(register_request)
@@ -92,11 +95,13 @@ async function login_function(login_request){
     let pass = document.querySelector("#password_input").value;
    
     let div = document.createElement("div");
+    div.classList.add("connecting")
         show_feedback(div)
         let resource = await fetch_function(login_request);
         switch (resource.status) {
                 case 418:
                     div.textContent = "The server thinks it's not a teapot!"
+                    div.classList.remove("connecting")
                     let button = document.createElement("button")
                     button.textContent = "CLOSE"
                     button.classList.add("close_btn")
@@ -130,7 +135,6 @@ async function fetch_function(request){
 function show_feedback(div){
         let wrapper = document.querySelector("#wrapper");
         wrapper.classList.add("registration_info");
-
         div.classList.add("info_div");
         div.textContent = "Contacting server...";
         document.querySelector("body").appendChild(div);
@@ -138,6 +142,7 @@ function show_feedback(div){
 
 function close_feedback(event){
     let div = document.querySelector(".info_div")
+    
     div.remove()
     let wrapper = document.querySelector("#wrapper");
         wrapper.classList.remove("registration_info");

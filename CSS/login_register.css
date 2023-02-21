@@ -11,6 +11,7 @@ body{
     
 }
 #wrapper{
+   
     height: 100vh;
     margin: 0;
     display: flex;
@@ -94,6 +95,9 @@ span{
     top: 50%;
     right: 8%;
     padding: 10px;
+}
+.connecting{
+    height: 60px;
 }
 .close_btn{
     width: 75vw;

@@ -1,5 +1,6 @@
 async function successful_login(resource){
     let body = document.querySelector("body")
+    
     body.innerHTML = `
     <body>
     <div id="wrapper">
@@ -19,13 +20,16 @@ async function successful_login(resource){
     <footer> <p>The Dog Breed Quiz is made possible thanks to the free api by <span>DOG CEO Zine</span></p> </footer>
 
 </div>`
+get_dog()
 
+document.querySelector("#logout_button").addEventListener("click", logout_function)
 localStorage.setItem("quiz_html", body.innerHTML)
 
 
 }
 
-let logout = document.querySelector("#logout_button").addEventListener("click", logout_function)
+
+document.querySelector("#logout_button").addEventListener("click", logout_function)
 
 function logout_function(event){
     localStorage.removeItem("quiz_html")
@@ -65,6 +69,9 @@ function logout_function(event){
     <script src="JS/login_register.js"></script>
     <script src="JS/quiz.js"></script>
     <script src="index.js"></script>`
+    document.getElementById("register_link").addEventListener("click", register_page)
+    document.querySelector("button").addEventListener("click", login_or_reg)
+    
 }
 
 get_dog()
