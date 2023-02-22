@@ -5,8 +5,8 @@ document.getElementById("register_link").addEventListener("click", register_page
 
 if(localStorage.getItem("quiz_html")){
     document.querySelector("body").innerHTML = localStorage.getItem("quiz_html")
+    
 }
-
 function register_page(event){
     
     let wrapper = document.querySelector("#wrapper")
@@ -118,19 +118,11 @@ async function login_function(login_request){
                 break;
         }
        if(resource.data.password === pass && resource.data.user_name === user){
-        successful_login(resource) 
+        successful_login(resource.data.user_name) 
        }
 }
 
-async function fetch_function(request){
-    let response = await fetch(request);
-    let resource = await response.json();
-    console.log(resource);
-        if(response.status !== 200){
-            return response
-        }
-        return resource;
-}
+
 
 function show_feedback(div){
         let wrapper = document.querySelector("#wrapper");

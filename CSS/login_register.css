@@ -63,7 +63,8 @@ button{
     font-size: 20px;
 }
 footer{
-    margin: 0px 15px 0px 15px;
+    margin-top: auto;
+    width: 90vw;
 }
 span{
     text-decoration: underline;
