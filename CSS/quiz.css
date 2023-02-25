@@ -1,3 +1,6 @@
+#wrapper{
+    overflow: auto;
+}
 #user_information{
     display: flex;
     justify-content: space-between;
@@ -14,6 +17,7 @@
     width: 25vw;
 }
 #dog_image{
+    margin-top: 60px;
     width: 90%;
     display: flex;
     justify-content: center;
@@ -48,8 +52,8 @@
     background-color: white;
     border-radius: 20px;
     position: absolute;
-    top: 50%;
-    right: 8%;
+    top: 40%;
+    right: 7%;
     padding: 10px;
 
     font-size: 25px;

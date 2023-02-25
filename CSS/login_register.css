@@ -6,20 +6,15 @@
 body{
     font-family: "roboto_regular";
     margin: 0;
-    background-color: aquamarine;
-    
-    
 }
 #wrapper{
-   
     height: 100vh;
     margin: 0;
     display: flex;
     align-items: center;
     flex-direction: column;
     
-    transition-property: background-color;
-    transition-duration: 1s;
+    
 }
 #logo_title{
     display: flex;
@@ -42,14 +37,15 @@ h1{
     margin: 0;
     font-size: 18px;
 }
-.input{
+.input_field{
+    display: flex;
+    flex-direction: column;
     width: 90vw;
     margin-bottom: 10px;
     
 }
 input{
     height: 20px;
-    width: 100%;
 }
 button{
     width: 90vw;
@@ -58,9 +54,13 @@ button{
     font-size: 20px;
 }
 #register_link{
+    
     text-decoration: underline;
     margin: 20px;
     font-size: 20px;
+}
+#register_link p{
+    cursor: pointer;
 }
 footer{
     margin-top: auto;
@@ -73,6 +73,16 @@ span{
 
 .registration{
     background-color: seagreen;
+}
+.login_page{
+    background-color: aquamarine;
+}
+.quiz_page{
+    background-color: skyblue;
+}
+.transition{
+    transition-property: background-color;
+    transition-duration: 1s;
 }
 #login_link{
     text-decoration: underline;
@@ -89,12 +99,12 @@ span{
     align-items: center;
     text-align: center;
     width: 80%;
-    height: 100px;
+    height: 120px;
     background-color: white;
     border-radius: 20px;
     position: absolute;
-    top: 50%;
-    right: 8%;
+    top: 40%;
+    right: 7%;
     padding: 10px;
 }
 .connecting{
