@@ -75,9 +75,6 @@ function logout_function(event){
     document.querySelector("#wrapper").classList.add("login_page")
 }
 
-
-
-
 async function get_dog(){
     let wrapper = document.querySelector("#wrapper");
     wrapper.classList.add("registration_info");
@@ -103,11 +100,6 @@ async function get_dog(){
     image_div.appendChild(img);
     wrapper.classList.remove("registration_info");
     make_options(4, index);
-}
-
-
-function get_number(length){
-    return Math.floor(Math.random() * length);
 }
 
 function make_options(number, dog_number){   
@@ -143,6 +135,12 @@ function check_answer(event){
     let div = document.createElement("div");
     div.classList.add("answer");
     document.querySelector("body").appendChild(div);
+    
+    document.querySelectorAll(".option_button").forEach(btn => {
+        btn.disabled = true
+        })
+        
+    document.querySelector("#logout_button").disabled = true
 
     
     if(event.target.id === "correct"){
@@ -158,6 +156,7 @@ function check_answer(event){
     button.textContent = "ONE MORE";
     button.classList.add("close_btn");
     div.append(button);
+    
     
     button.addEventListener("click", new_question);
 }

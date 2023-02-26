@@ -3,11 +3,10 @@
 document.getElementById("register_link").addEventListener("click", register_page);
 document.querySelector("#wrapper").classList.add("login_page");
 
-
-
 if(localStorage.getItem("quiz_html")){
     document.querySelector("body").innerHTML = localStorage.getItem("quiz_html");
 }
+
 function register_page(event){
     
     let wrapper = document.querySelector("#wrapper");
